@@ -139,11 +139,11 @@ func sortMap(values map[string]int) []LettersScore {
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Printf("Usage: %s {num}|{word}|{letters}\n", os.Args[0])
+		fmt.Printf("Usage: %s {number}|{word}|{letters}\n", os.Args[0])
 		fmt.Println()
-		fmt.Println("num: Number of characters in the seeding word")
-		fmt.Println("word: Seeding word consisting of 7 unique characters")
-		fmt.Println("letters: 7 unique characters with mandatory character first")
+		fmt.Println("number  : Number of letters in the seeding word")
+		fmt.Println("word    : Seeding word consisting of 7 unique letters")
+		fmt.Println("letters : 7 unique letters with mandatory letter first")
 		fmt.Println()
 		return
 	}
