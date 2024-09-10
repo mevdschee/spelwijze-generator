@@ -27,22 +27,12 @@ func hasOtherLetters(s string, letters []rune) bool {
 	return false
 }
 
-func main() {
+func solve(letters string) []string {
 	words := []string{}
 	txtFiles, err := fs.Glob(os.DirFS("."), "*.txt")
 	if err != nil {
 		panic(err)
 	}
-	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Print("Enter character (mandatory first): ")
-	letters := ""
-	if scanner.Scan() {
-		letters = scanner.Text()
-	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
 	for _, txtFile := range txtFiles {
 		file, err := os.Open(txtFile)
 		if err != nil {
@@ -62,8 +52,21 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-
 	sort.Strings(words)
+	return words
+}
+
+func main() {
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Print("Enter character (mandatory first): ")
+	letters := ""
+	if scanner.Scan() {
+		letters = scanner.Text()
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	words := solve(letters)
 	for _, word := range words {
 		fmt.Println(word)
 	}
