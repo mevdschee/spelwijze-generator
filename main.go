@@ -105,14 +105,36 @@ func generate(length int) []string {
 	return selectWords(selectFunction)
 }
 
-func letterScores(word string) map[string]int {
+type LettersScore struct {
+	Letters string
+	Score   int
+}
+
+func letterScores(word string) []LettersScore {
 	initialLetters := []rune(findLetters(word))
 	scores := make(map[string]int, len(initialLetters))
 	for i := 0; i < len(initialLetters); i++ {
 		letters := append(initialLetters[i:], initialLetters[0:i]...)
+		firstLetter := letters[0]
+		otherLetters := []rune(string(letters[1:]))
+		sort.Slice(otherLetters, func(i, j int) bool {
+			return otherLetters[i] < otherLetters[j]
+		})
+		letters = append([]rune{firstLetter}, otherLetters...)
 		scores[string(letters)] = len(solve(string(letters)))
 	}
-	return scores
+	return sortMap(scores)
+}
+
+func sortMap(values map[string]int) []LettersScore {
+	var pairs []LettersScore
+	for k, v := range values {
+		pairs = append(pairs, LettersScore{k, v})
+	}
+	sort.Slice(pairs, func(i, j int) bool {
+		return pairs[i].Score > pairs[j].Score
+	})
+	return pairs
 }
 
 func main() {
@@ -135,8 +157,8 @@ func main() {
 	}
 	if len(os.Args[1]) > 7 {
 		scores := letterScores(os.Args[1])
-		for letters, score := range scores {
-			fmt.Printf("%s: %d\n", letters, score)
+		for _, ls := range scores {
+			fmt.Printf("%s: %d\n", ls.Letters, ls.Score)
 		}
 		return
 	}
