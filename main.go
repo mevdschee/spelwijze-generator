@@ -117,7 +117,12 @@ func letterScores(word string) map[string]int {
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: {num}|{word}|{letters}")
+		fmt.Printf("Usage: %s {num}|{word}|{letters}\n", os.Args[0])
+		fmt.Println()
+		fmt.Println("num: Number of characters in the seeding word")
+		fmt.Println("word: Seeding word consisting of 7 unique characters")
+		fmt.Println("letters: 7 unique characters with mandatory character first")
+		fmt.Println()
 		return
 	}
 	length, err := strconv.Atoi(os.Args[1])
