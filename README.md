@@ -6,7 +6,7 @@ Download Dutch words from:
 
 https://www.opentaal.org/bestanden/file/2-woordenlijst-v-2-10g-bronbestanden
 
-To filter out non-letter characters execute:
+To filter out non-letter characters (go from 164313 to 156280 words) execute:
 
     cat 'OpenTaal-210G-basis-gekeurd.txt' | grep -vP '[^a-z]' | sort | uniq > woordenlijst.txt
 
