@@ -12,7 +12,7 @@ Now run pick a length for your seeding word (a word with 7 different letters):
 
     go run . 16
 
-Showing:
+Showing all 16 letter words consisting of exactly 7 different letters:
 
     begijnenbeweging
     binnenduingebied
