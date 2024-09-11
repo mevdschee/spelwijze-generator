@@ -8,7 +8,7 @@ To filter out non-letter characters execute:
 
     cat 'OpenTaal-210G-basis-gekeurd.txt' | grep -vP '[^a-z]' | sort | uniq > woordenlijst.txt
 
-Now run the application.
+Now run pick a length for your seeding word:
 
     go run . 16
 
@@ -26,11 +26,11 @@ Showing:
     intentionaliteit
     ...(23 more)...
 
-Now pick one and run:
+Now pick a seeding word and run:
 
     go run . espressoapparaat
 
-Resulting in the number of words considering the mandatory (first) letter:
+Resulting in the number of words dependent on the first (mandatory) letter:
 
     taeoprs: 333
     raeopst: 315
