@@ -42,11 +42,11 @@ Resulting in 7 different 7 letter combinations (showing how many words can be ma
     mbelnot: 110
     belmnot: 104
 
-Now if we chose "belmnot" (where "b" is the mandatory letter) we can run:
+Now if we chose "mbelnot" (where "m" is the mandatory letter) we can run:
 
-    go run . belmnot
+    go run . mbelnot
 
-To find all words containing a "b" and one or more of the other letters:
+To find all 110 words containing a "m" and one or more of the other letters:
 
     beetnemen
     bemeten
