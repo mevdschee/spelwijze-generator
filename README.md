@@ -30,7 +30,7 @@ Now pick a seeding word and run:
 
     go run . bloembollenteelt
 
-Resulting in 7 letter combinations depending on the first (mandatory) letter:
+Resulting in 7 different 7 letter combinations (each having a different first (mandatory) letter):
 
     eblmnot: 210
     nbelmot: 165
