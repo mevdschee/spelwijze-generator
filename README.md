@@ -10,8 +10,52 @@ To filter out non-letter characters execute:
 
 Now run the application.
 
-    go run . 14
-    go run . managementlaag
-    go run . maeglnt
+    go run . 16
+
+Showing:
+
+    begijnenbeweging
+    binnenduingebied
+    bloembollenteelt
+    concernonderdeel
+    engineeringgroep
+    espressoapparaat
+    exercitieterrein
+    geestesgestoorde
+    herinterpreteren
+    intentionaliteit
+    ...(23 more)...
+
+Now pick one and run:
+
+    go run . espressoapparaat
+
+Resulting in the number of words considering the mandatory (first) letter:
+
+    taeoprs: 333
+    raeopst: 315
+    saeoprt: 293
+    eaoprst: 275
+    paeorst: 270
+    oaeprst: 256
+    aeoprst: 197
+
+Now run to solve:
+
+    go run . aeoprst
+
+To find:
+
+    aars
+    aaseter
+    aassoort
+    aastor
+    aorta
+    apart
+    aparte
+    apert
+    apetrots
+    apoptose
+    ...(187 more)...
 
 Enjoy!
