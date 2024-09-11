@@ -30,7 +30,7 @@ Now pick a seeding word and run:
 
     go run . bloembollenteelt
 
-Resulting in the number of words dependent on the first (mandatory) letter:
+Resulting in 7 letter combinations depending on the first (mandatory) letter:
 
     eblmnot: 210
     nbelmot: 165
@@ -40,11 +40,11 @@ Resulting in the number of words dependent on the first (mandatory) letter:
     mbelnot: 110
     belmnot: 104
 
-Now run to solve:
+Now if we chose "belmnot" (where "b" is the mandatory letter) we can run:
 
     go run . belmnot
 
-To find:
+To find all words containing a "b" and one or more of the other letters:
 
     beetnemen
     bemeten
