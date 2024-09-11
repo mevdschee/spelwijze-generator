@@ -28,34 +28,34 @@ Showing:
 
 Now pick a seeding word and run:
 
-    go run . espressoapparaat
+    go run . bloembollenteelt
 
 Resulting in the number of words dependent on the first (mandatory) letter:
 
-    taeoprs: 333
-    raeopst: 315
-    saeoprt: 293
-    eaoprst: 275
-    paeorst: 270
-    oaeprst: 256
-    aeoprst: 197
+    eblmnot: 210
+    nbelmot: 165
+    obelmnt: 163
+    tbelmno: 151
+    lbemnot: 118
+    mbelnot: 110
+    belmnot: 104
 
 Now run to solve:
 
-    go run . aeoprst
+    go run . belmnot
 
 To find:
 
-    aars
-    aaseter
-    aassoort
-    aastor
-    aorta
-    apart
-    aparte
-    apert
-    apetrots
-    apoptose
-    ...(187 more)...
+    beboet
+    beboeten
+    been
+    beet
+    beetnemen
+    belenen
+    belet
+    beletten
+    belle
+    bellen
+    ...(94 more)...
 
 Enjoy!
