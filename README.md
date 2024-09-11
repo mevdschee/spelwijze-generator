@@ -1,5 +1,7 @@
 # spelwijze-genie
 
+Spelwijze is spelling game that is published on Dutch newspaper websites. You get one mandatory letter and six optional letters. The goal is to make as many 4 or more letter words with these 7 letters containing at least the mandatory letter once. This repository contains a tool to generate these puzzles.
+
 Download Dutch words from:
 
 https://www.opentaal.org/bestanden/file/2-woordenlijst-v-2-10g-bronbestanden
