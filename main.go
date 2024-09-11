@@ -145,11 +145,11 @@ func letterScores(word string) []LettersScore {
 		count := len(words)
 		score := 0
 		for _, word := range words {
-			if wordFrequency[word] > 2 {
-				score += len(word)
+			if wordFrequency[word] > 0 {
+				score += len(word) + wordFrequency[word]/10
 			}
 			if wordFrequency[word] == 0 {
-				score -= 20
+				score -= 30
 			}
 		}
 		scores[string(letters)] = count*2 + score

@@ -48,13 +48,13 @@ Now pick a seeding word and run:
 
 Resulting in 7 different 7 letter combinations (showing how many words can be made):
 
-    eblmnot: 210
-    nbelmot: 165
-    obelmnt: 163
-    tbelmno: 151
-    lbemnot: 118
-    mbelnot: 110
-    belmnot: 104
+    tbelmno: 191
+    nbelmot: 166
+    eblmnot: 159
+    belmnot: 100
+    obelmnt: 49
+    mbelnot: 9
+    lbemnot: -25
 
 Now if we chose "mbelnot" (where "m" is the mandatory letter) we can run:
 
