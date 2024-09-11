@@ -46,7 +46,7 @@ Now pick a seeding word and run:
 
     go run . bloembollenteelt
 
-Resulting in 7 different 7 letter combinations (showing how many words can be made):
+Resulting in 7 different 7 letter combinations (points based on word frequency):
 
     tbelmno: 728
     eblmnot: 725
