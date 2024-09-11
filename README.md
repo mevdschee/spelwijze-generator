@@ -16,7 +16,7 @@ Download Dutch word freqencies from:
 
 https://wortschatz.uni-leipzig.de/en/download/Dutch
 
-To filter the frequency and store them (go from 1000000 to 515630 words) execute:
+To filter the word frequency list (go from 1000000 to 515630 words) execute:
 
     cat 'nld_mixed_2012_1M-words.txt' | cut -f 2,3 | tr A-Z a-z | grep -P '^[a-z]+\t' | gzip > wordfreq.txt.gz
 
