@@ -46,16 +46,16 @@ Now run to solve:
 
 To find:
 
-    beboet
-    beboeten
-    been
-    beet
     beetnemen
-    belenen
-    belet
-    beletten
-    belle
-    bellen
-    ...(94 more)...
+    bemeten
+    benemen
+    benoemen
+    betomen
+    betonelement
+    betonmolen
+    bloem
+    bloembol
+    bloembollenteelt
+    ...(100 more)...
 
 Enjoy!
