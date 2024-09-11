@@ -2,12 +2,13 @@ package main
 
 import (
 	"bufio"
+	"compress/gzip"
 	"fmt"
-	"io/fs"
 	"log"
 	"os"
 	"sort"
 	"strconv"
+	"strings"
 )
 
 func hasLetter(s string, l rune) bool {
@@ -28,28 +29,24 @@ func hasOtherLetters(s string, letters []rune) bool {
 	return false
 }
 
-func selectWords(selectFunction func(word string) bool) []string {
+func selectWords(txtFile string, selectFunction func(word string) bool) []string {
 	words := []string{}
-	txtFiles, err := fs.Glob(os.DirFS("."), "*.txt")
+	file, err := os.Open(txtFile)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	for _, txtFile := range txtFiles {
-		file, err := os.Open(txtFile)
-		if err != nil {
-			log.Fatal(err)
+	defer file.Close()
+	gz, err := gzip.NewReader(file)
+	defer gz.Close()
+	scanner := bufio.NewScanner(gz)
+	for scanner.Scan() {
+		word := scanner.Text()
+		if selectFunction == nil || selectFunction(word) {
+			words = append(words, word)
 		}
-		defer file.Close()
-		scanner := bufio.NewScanner(file)
-		for scanner.Scan() {
-			word := scanner.Text()
-			if selectFunction(word) {
-				words = append(words, word)
-			}
-		}
-		if err := scanner.Err(); err != nil {
-			log.Fatal(err)
-		}
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
 	}
 	sort.Strings(words)
 	return words
@@ -76,7 +73,7 @@ func solve(letters string) []string {
 	selectFunction := func(word string) bool {
 		return consistingOf(word, letters)
 	}
-	return selectWords(selectFunction)
+	return selectWords("words.txt.gz", selectFunction)
 }
 
 func findLetters(word string) string {
@@ -91,6 +88,28 @@ func findLetters(word string) string {
 	return string(letters)
 }
 
+func findWordFrequency() map[string]int {
+	allWords := selectWords("words.txt.gz", nil)
+	wordFrequency := make(map[string]int, len(allWords))
+	for _, word := range allWords {
+		wordFrequency[word] = 0
+	}
+	setFrequency := func(wordAndFrequency string) bool {
+		parts := strings.Split(wordAndFrequency, "\t")
+		word := parts[0]
+		frequency, err := strconv.Atoi(parts[1])
+		if err == nil {
+			_, ok := wordFrequency[word]
+			if ok {
+				wordFrequency[word] = frequency
+			}
+		}
+		return false
+	}
+	selectWords("wordfreq.txt.gz", setFrequency)
+	return wordFrequency
+}
+
 func generate(length int) []string {
 	selectFunction := func(word string) bool {
 		if len(word) != length {
@@ -102,7 +121,7 @@ func generate(length int) []string {
 		}
 		return len(charSet) == 7
 	}
-	return selectWords(selectFunction)
+	return selectWords("words.txt.gz", selectFunction)
 }
 
 type LettersScore struct {
@@ -111,6 +130,7 @@ type LettersScore struct {
 }
 
 func letterScores(word string) []LettersScore {
+	wordFrequency := findWordFrequency()
 	initialLetters := []rune(findLetters(word))
 	scores := make(map[string]int, len(initialLetters))
 	for i := 0; i < len(initialLetters); i++ {
@@ -121,7 +141,18 @@ func letterScores(word string) []LettersScore {
 			return otherLetters[i] < otherLetters[j]
 		})
 		letters = append([]rune{firstLetter}, otherLetters...)
-		scores[string(letters)] = len(solve(string(letters)))
+		words := solve(string(letters))
+		count := len(words)
+		score := 0
+		for _, word := range words {
+			if wordFrequency[word] > 2 {
+				score += len(word)
+			}
+			if wordFrequency[word] == 0 {
+				score -= 20
+			}
+		}
+		scores[string(letters)] = count*2 + score
 	}
 	return sortMap(scores)
 }
