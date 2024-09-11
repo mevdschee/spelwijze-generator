@@ -10,15 +10,17 @@ https://www.opentaal.org/bestanden/file/2-woordenlijst-v-2-10g-bronbestanden
 
 To filter out non-letter characters (go from 164313 to 156280 words) execute:
 
-    cat 'OpenTaal-210G-basis-gekeurd.txt' | grep -vP '[^a-z]' | sort | uniq > woordenlijst.txt
+    cat 'OpenTaal-210G-basis-gekeurd.txt' | grep -vP '[^a-z]' | sort | uniq | gzip > words.txt.gz
 
 Download Dutch word freqencies from:
 
 https://wortschatz.uni-leipzig.de/en/download/Dutch
 
-To get only the frequency and the 
+To filter the frequency and store them (go from 1M to 515630) execute:
 
-    cat 'nld_mixed_2012_1M-words.txt' | cut -f 2,3 | tr A-Z a-z | grep -P '^[a-z]+\t[0-9]+$' > frequenties.txt
+    cat 'nld_mixed_2012_1M-words.txt' | cut -f 2,3 | tr A-Z a-z | grep -P '^[a-z]+\t[0-9]+$' | gzip > wordfreq.txt.gz
+
+The text files are gzipped to reduce space.
 
 ### Running
 
