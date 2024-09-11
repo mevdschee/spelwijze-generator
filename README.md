@@ -9,3 +9,9 @@ To filter out non-letter characters execute:
     cat 'OpenTaal-210G-basis-gekeurd.txt' | grep -vP '[^a-z]' | sort | uniq > woordenlijst.txt
 
 Now run the application.
+
+    go run . 14
+    go run . managementlaag
+    go run . maeglnt
+
+Enjoy!
