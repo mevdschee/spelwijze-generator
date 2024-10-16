@@ -22,7 +22,7 @@ To filter the word frequency list (go from 1000000 to 515630 words) execute:
 
 The text files are gzipped to reduce space.
 
-Download another great list from:
+Optional: Download another great list from:
 
 https://kaikki.org/dictionary/Dutch/words/index.html
 
