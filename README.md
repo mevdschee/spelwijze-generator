@@ -22,6 +22,25 @@ To filter the word frequency list (go from 1000000 to 515630 words) execute:
 
 The text files are gzipped to reduce space.
 
+Download another great list from:
+
+https://kaikki.org/dictionary/Dutch/words/index.html
+
+To filter the verbs:
+
+    cat kaikki.org-dictionary-Dutch.jsonl | grep '"pos": "verb"' | grep -o '"head_templates": \[{"name": "nl-verb", "args": {}, "expansion": "[a-z]\{4,\}"' | sort | uniq | cut -d\" -f 12 | gzip > verbs.txt.gz
+
+To filter the nouns:
+
+    cat kaikki.org-dictionary-Dutch.jsonl | grep '"pos": "noun"' | grep -v plural | grep -o '"word": "[a-z]\+"' | cut -d: -f2 | cut -d\" -f 2 | sort | uniq | gzip > nouns.txt.gz
+
+To add and combine these:
+
+    mv words.txt.gz words1.txt.gz
+    zcat words1.txt.gz verbs.txt.gz nouns.txt.gz | sort | uniq | gzip > words.txt.gz
+
+Now the extra words are added.
+
 ### Running
 
 Now run pick a length for your seeding word (a word with 7 different letters):
