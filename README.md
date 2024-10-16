@@ -38,6 +38,7 @@ To add and combine these:
 
     mv words.txt.gz words1.txt.gz
     zcat words1.txt.gz verbs.txt.gz nouns.txt.gz | sort | uniq | gzip > words.txt.gz
+    rm words1.txt.gz verbs.txt.gz nouns.txt.gz
 
 Now the extra words are added.
 
