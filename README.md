@@ -32,7 +32,7 @@ To filter the verbs:
 
 To filter the nouns:
 
-    cat kaikki.org-dictionary-Dutch.jsonl | grep '"pos": "noun"' | grep -v plural | grep -o '"word": "[a-z]\+"' | cut -d: -f2 | cut -d\" -f 2 | sort | uniq | gzip > nouns.txt.gz
+    cat kaikki.org-dictionary-Dutch.jsonl | grep '"pos": "noun"' | grep -v '"plural"' | grep -o '"word": "[a-z]\+"' | cut -d: -f2 | cut -d\" -f 2 | sort | uniq | gzip > nouns.txt.gz
 
 To add and combine these:
 
