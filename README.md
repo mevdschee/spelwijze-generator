@@ -80,7 +80,7 @@ Now if we chose "mbelnot" (where "m" is the mandatory letter) we can run:
 
     go run . mbelnot
 
-To find all 110 words containing the letter "m" and one or more of the other 6 letters:
+To find all 110 words with minimum length 4 that contain the letter "m" and one or more of the other 6 letters:
 
     beetnemen
     bemeten
